@@ -5,7 +5,6 @@
 </head>
 <body  style="background-image:url('bg.jpg')"; background-repeat: no-repeat;
   background-size: auto" >
-<a href='Search.html'>Go Home</a>
 <p id='display'></p>
 
 <div id="card">
@@ -43,7 +42,7 @@ function getdetails(arr){
 var i;
 var out="";
 //alert(JSON.stringify(arr[0].latlng[1]).split(",")[0]);
-out='<br><p align="center"><b><u>DETAILS</u></b></p><br><b>Country</b>: '+arr[0].name+'<br><b>Capital</b>: '+arr[0].capital+'<br><b>Region</b>: '+arr[0].region+'<br><b>Population</b>: '+arr[0].population+'<br><b>Area</b>: '+arr[0].area+' sq. km<br><b>Language</b>: '+arr[0].languages[0]['name']+'<br><b>Latitude</b>: '+JSON.stringify(arr[0].latlng[0]).split(",")[0]+'<sup>o</sup> <b>Longitude</b>: '+JSON.stringify(arr[0].latlng[1]).split(",")[0]+'<sup>o</sup><br><b>Currency</b>:<br><b>Name</b>: '+arr[0].currencies[0]['name']+' <b>Symbol</b>: '+arr[0].currencies[0]['symbol']+'<br><b>Timezone</b>: '+arr[0].timezones;
+out='<br><p align="center"><b><u>DETAILS</u></b></p><br><b>Country</b>: '+arr[0].name+'<br><b>Capital</b>: '+arr[0].capital+'<br><b>Region</b>: '+arr[0].region+'<br><b>Population</b>: '+arr[0].population+'<br><b>Area</b>: '+arr[0].area+' sq. km<br><b>Language</b>: '+arr[0].languages[0]['name']+'<br><b>Latitude</b>: '+JSON.stringify(arr[0].latlng[0]).split(",")[0]+'<sup>o</sup> <b>Longitude</b>: '+JSON.stringify(arr[0].latlng[1]).split(",")[0]+'<sup>o</sup><br><b>Currency</b>:<br><b>Name</b>: '+arr[0].currencies[0]['name']+' <b>Symbol</b>: '+arr[0].currencies[0]['symbol']+'<br><b>Timezone</b>: '+arr[0].timezones+'<br><br><a href="Search.html">Go Home</a>';
 document.getElementById('inside').innerHTML=out;
 //document.getElementById('nam').innerHTML=arr[0].name;
 document.getElementById('outside').innerHTML='<img width=100% height=80% src='+arr[0].flag+'><br><h2 align=center>'+arr[0].name.toUpperCase()+'</h2>';
