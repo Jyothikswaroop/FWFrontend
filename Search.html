@@ -1,0 +1,84 @@
+<html>
+<title>
+Country Explorer
+</title>
+
+<head>
+<link rel='stylesheet' href='frontend.css'>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color:white;
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  width: 40%;
+}
+
+.container {
+  padding: 2px 16px;
+  background-color:white;
+  width: 100%;
+}
+
+</style>
+</head>
+<body style="background-image:url('bg.jpg'); background-repeat: repeat;
+  background-size: auto">
+<h1 align='center' style="color:white" >COUNTRY EXPLORER</h1>
+<div class="topnav" align='center'>
+  <input type="text" id='name' name="search" align='center' placeholder="Search...">
+  <button id="submit" onclick="Apif()">Submit</button>
+<br><br>
+</div>
+<div id="API"></div>
+<script>
+function Apif()
+{
+fetch("https://restcountries.eu/rest/v2/name/"+document.getElementById('name').value)
+.then(function(response){
+   if (response.status !== 200){
+    alert("No such country");
+    document.getElementById('name').value='';
+    document.getElementById('name').focus();
+    return;}
+  response.json().then(function(data){
+  getdetails(data);
+  });
+})
+};
+function getdetails(arr){
+var i;
+var out="";
+for(i=0;i<arr.length;i++)
+{
+  var j=arr[i].name;
+  out+=
+	'<div class="card" onclick="country(\''+arr[i].name+'\')"  style="width: 500px; float:left; background:white; height: 100px; margin:10px ">'+
+  '<img style="width:100%" src='+arr[i].flag+'>'+'<div class="container"><h4><b>'+arr[i].name+'</b></h4><p>'+arr[i].region+'</p></div></div>';
+if(i%2!=0)
+{
+ out+='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
+}
+
+
+}
+document.getElementById('API').innerHTML=out
+};
+function country(nam){
+localStorage.setItem("name",nam)
+location.href="Details.html";};
+var input = document.getElementById("name");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("submit").click();
+  }
+});
+</script>
+
+</body>
+</html>
